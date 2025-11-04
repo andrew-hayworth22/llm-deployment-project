@@ -24,3 +24,9 @@ After the daemon has started, you can then run the command to apply the Docker c
 When you are finished testing, be sure to stop the MPS daemon with the following command:
 
 ```make mps-stop```
+
+## Running Benchmark
+
+To run the benchmarking suite, run the following command:
+
+```make bench-run```

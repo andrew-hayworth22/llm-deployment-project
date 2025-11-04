@@ -20,3 +20,7 @@ mps-start:
 # Stops the CUDA MPS daemon on the host machine
 mps-stop:
 	echo quit | sudo nvidia-cuda-mps-control
+
+# Runs the benchmarking suite
+bench-run:
+	python3 ./tools/benchmark/run_bench.py
