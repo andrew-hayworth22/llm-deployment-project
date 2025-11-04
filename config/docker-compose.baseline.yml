@@ -1,0 +1,32 @@
+version: "1.0.0"
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    command: >
+      --model facebook/opt-1.3b
+      --dtype auto
+      --max-model-len 4096
+      --port 8000
+    ports: ["8000:8000"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["gpu"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+  tgi:
+    image: ghcr.io/huggingface/text-generation-inference:latest
+    command: >
+      --model-id facebook/opt-1.3b
+      --max-input-length 2048
+      --max-total-tokens 4096
+      --port 8080
+    ports: ["8080:8080"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["gpu"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
