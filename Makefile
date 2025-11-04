@@ -23,4 +23,6 @@ mps-stop:
 
 # Runs the benchmarking suite
 bench-run:
+	source ./tools/benchmark/.venv/bin/activate
 	python3 ./tools/benchmark/run_bench.py
+	deactivate
